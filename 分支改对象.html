@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  /*这就是鸭子模型的作用*/
+  var googleMap={
+    show:function(){
+      console.log('显示google地图');
+    }
+  }
+  var baiduMap={
+    show:function(){
+      console.log('显示baidu地图');
+    }
+  }
+  var renderMap=function(type){
+    if(type==='google'){
+      googleMap.show();
+    }else if(type='baidu'){
+      baiduMap.show();
+    }
+  }
+  renderMap('google');
+  renderMap('baidu');
+  /*以后要拓展地图方式,要改renderMap和外卖的部分,可维护性不强*/
+  /**************以下为修改部分*********************/
+  var renderMap=function(map){
+    if(typeof map.show==='function'){
+      map.show();
+    }
+  }
+  renderMap(baiduMap);
+  renderMap(googleMap);/*不用改变内部*/
+</script>
+</body>
+</html>
